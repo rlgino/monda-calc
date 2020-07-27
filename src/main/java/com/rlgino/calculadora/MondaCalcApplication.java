@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(value = "com.rlgino.calculadora,controller")
+@ComponentScan(value = "com.rlgino.calculadora")
 public class MondaCalcApplication {
 
 	public static void main(String[] args) {
