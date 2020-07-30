@@ -10,6 +10,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -37,6 +38,15 @@ public class CalculadoraControllerTest {
     }
 
     @Test
+    public void sumarNullParametersTest() {
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
+
+        assertThrows(CalculadoraController.CustomException.class, () -> calculadora.sumarHandler(null, 10));
+        assertThrows(CalculadoraController.CustomException.class, () -> calculadora.sumarHandler(10, null));
+    }
+
+    @Test
     public void restarTest() {
         MockHttpServletRequest request = new MockHttpServletRequest();
         RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
@@ -49,5 +59,14 @@ public class CalculadoraControllerTest {
         Integer result = calculadora.restarHandler(n1, n2);
 
         assertThat(result).isEqualTo(-10);
+    }
+
+    @Test
+    public void restarNullParametersTest() {
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
+
+        assertThrows(CalculadoraController.CustomException.class, () -> calculadora.restarHandler(null, 10));
+        assertThrows(CalculadoraController.CustomException.class, () -> calculadora.restarHandler(10, null));
     }
 }

@@ -10,6 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 @Controller
 public class CurrencyConverterController {
     @Autowired
@@ -17,7 +20,7 @@ public class CurrencyConverterController {
 
     @PostMapping(path = "/convert", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> convertFrom(@RequestBody CurrencyConverter body) {
-        currencyBussiness.convert();
-        return new ResponseEntity("Response " + body.getCurrencyFrom(),HttpStatus.OK);
+        final BigDecimal result = currencyBussiness.convert(body);
+        return new ResponseEntity("Total " + result.setScale(2, RoundingMode.HALF_DOWN).toString(),HttpStatus.OK);
     }
 }

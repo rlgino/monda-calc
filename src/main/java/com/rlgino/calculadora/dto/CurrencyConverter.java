@@ -11,6 +11,12 @@ public class CurrencyConverter {
     @JsonProperty("currency_to")
     private String currencyTo;
 
+    public CurrencyConverter(BigDecimal value, String currencyFrom, String currencyTo) {
+        this.value = value;
+        this.currencyFrom = currencyFrom;
+        this.currencyTo = currencyTo;
+    }
+
     public BigDecimal getValue() {
         return value;
     }

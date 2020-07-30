@@ -1,21 +1,15 @@
-package com.rlgino.calculadora.service;
+package com.rlgino.calculadora.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.math.BigDecimal;
 import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CurrencyExchange {
-    /*
-    "rates": {
-        "CAD": 1.3360341151
-    },
-    "base": "USD",
-    "date": "2020-07-29"
-     */
+public class CurrencyExchangeResponse {
     private String base;
     private String date;
-    private Map<String, Double> rates;
+    private Map<String, BigDecimal> rates;
 
     public String getBase() {
         return base;
@@ -33,11 +27,11 @@ public class CurrencyExchange {
         this.date = date;
     }
 
-    public Map<String, Double> getRates() {
+    public Map<String, BigDecimal> getRates() {
         return rates;
     }
 
-    public void setRates(Map<String, Double> rates) {
+    public void setRates(Map<String, BigDecimal> rates) {
         this.rates = rates;
     }
 }

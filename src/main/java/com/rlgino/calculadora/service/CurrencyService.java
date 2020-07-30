@@ -1,10 +1,9 @@
 package com.rlgino.calculadora.service;
 
+import com.rlgino.calculadora.dto.CurrencyExchangeResponse;
 import org.springframework.stereotype.Service;
-
-import java.math.BigDecimal;
 
 @Service
 public interface CurrencyService {
-    public BigDecimal getCurrencyValue();
+    public CurrencyExchangeResponse getCurrencyValue();
 }
