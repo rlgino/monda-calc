@@ -20,7 +20,13 @@ public class CurrencyConverterController {
 
     @PostMapping(path = "/convert", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> convertFrom(@RequestBody CurrencyConverter body) {
-        final BigDecimal result = currencyBussiness.convert(body);
-        return new ResponseEntity("Total " + result.setScale(2, RoundingMode.HALF_DOWN).toString(),HttpStatus.OK);
+        try {
+            final BigDecimal result = currencyBussiness.convert(body);
+            return new ResponseEntity<>("Total " + result.setScale(2, RoundingMode.HALF_DOWN).toString(),HttpStatus.OK);
+        }catch (final RuntimeException e) {
+            return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
+        } catch (final Exception e){
+            return new ResponseEntity<>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
