@@ -1,10 +1,14 @@
 package com.rlgino.calculadora.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.math.BigDecimal;
 
 public class CurrencyConverter {
     private BigDecimal value;
+    @JsonProperty("currency_from")
     private String currencyFrom;
+    @JsonProperty("currency_to")
     private String currencyTo;
 
     public BigDecimal getValue() {
