@@ -1,12 +1,12 @@
-package com.rlgino.calculadora.service;
+package com.rlgino.calculadora.bussiness;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-@Service
-public class CalculadoraService {
+@Component
+public class Calculadora {
 
     public Integer sumar(Integer n1, Integer n2) {
         return n1 + n2;
