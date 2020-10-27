@@ -13,3 +13,9 @@ blocks:
             - sem-version java 1.8
             - checkout
             - ./gradlew build
+  - name: Test
+    task:
+      jobs:
+        - name: Unit Test
+          commands:
+            - gradlew test --parallel
