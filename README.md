@@ -60,3 +60,4 @@ Se crea el contexto y el dato de acceso al usuario y se ejecuta el archivo docke
 * [Testing con Spring boot](https://howtodoinjava.com/spring-boot2/testing/rest-controller-unit-test-example/)
 * [API Exchange](https://exchangeratesapi.io/)
 * [Rest client Test](https://rieckpil.de/testing-your-spring-resttemplate-with-restclienttest/)
+* [Status Response](https://www.baeldung.com/spring-response-status)
