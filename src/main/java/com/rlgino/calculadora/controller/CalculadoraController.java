@@ -1,6 +1,6 @@
 package com.rlgino.calculadora.controller;
 
-import com.rlgino.calculadora.service.CalculadoraService;
+import com.rlgino.calculadora.bussiness.Calculadora;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.math.BigDecimal;
 
 @RestController
-public class Calculadora {
+public class CalculadoraController {
 
     @Autowired
-    private CalculadoraService calculadoraService;
+    private Calculadora calculadora;
 
     @GetMapping(path = "/sumar")
     @ResponseStatus(HttpStatus.OK)
@@ -24,7 +24,7 @@ public class Calculadora {
         } else if(n2 == null){
             throw new CustomException();
         }
-        return calculadoraService.sumar(n1, n2);
+        return calculadora.sumar(n1, n2);
     }
 
     @GetMapping(path = "/restar")
@@ -34,7 +34,7 @@ public class Calculadora {
         } else if(n2 == null){
             throw new CustomException();
         }
-        return calculadoraService.restar(n1, n2);
+        return calculadora.restar(n1, n2);
     }
 
     @GetMapping(path = "/multiplicar")
@@ -44,7 +44,7 @@ public class Calculadora {
         } else if(n2 == null){
             throw new CustomException();
         }
-        return calculadoraService.multiplicar(n1, n2);
+        return calculadora.multiplicar(n1, n2);
     }
 
     @GetMapping(path = "/dividir")
@@ -56,7 +56,7 @@ public class Calculadora {
         }
         BigDecimal n1bd = new BigDecimal(n1);
         BigDecimal n2bd = new BigDecimal(n2);
-        return calculadoraService.dividir(n1bd, n2bd).doubleValue();
+        return calculadora.dividir(n1bd, n2bd).doubleValue();
     }
 
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
