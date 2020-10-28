@@ -12,7 +12,6 @@ blocks:
           commands:
             - gradle build
             - echo "$DOCKER_PASSWORD" | docker login  --username "$DOCKER_USERNAME" --password-stdin
-            - 'docker pull "$DOCKER_USERNAME"/semaphore-demo-java-spring:latest || true'
             - 'docker build --cache-from "$DOCKER_USERNAME"/monda-calc:latest -t "$DOCKER_USERNAME"/monda-calc:latest .'
             - 'docker push "$DOCKER_USERNAME"/monda-calc:latest'
       secrets:
