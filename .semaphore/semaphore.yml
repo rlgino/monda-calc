@@ -1,0 +1,20 @@
+version: v1.0
+name: Java
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: Gradle
+    task:
+      jobs:
+        - name: Build
+          commands:
+            - sem-version java 1.8
+            - checkout
+            - ./gradlew build
+promotions:
+  - name: Dockerize
+    pipeline_file: pipeline_2.yml
+    auto_promote:
+      when: branch = 'master' AND result = 'passed'
